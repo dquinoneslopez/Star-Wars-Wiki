@@ -12,6 +12,7 @@ import { FilmComponent } from './films/film.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrincipalComponent } from './principal/principal.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { CharacterComponent } from './people/character.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CarouselComponent } from './carousel/carousel.component';
     FilmComponent,
     PrincipalComponent,
     CarouselComponent,
+    CharacterComponent,
     //BusquedaComponent
   ],
   imports: [

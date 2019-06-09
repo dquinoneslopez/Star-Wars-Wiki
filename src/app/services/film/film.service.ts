@@ -22,7 +22,7 @@ export class FilmService {
     const url = URL_SERVICIOS + 'films';
 
     return from(getData(url)).pipe(
-       map((resp: any) => { return resp.results; })
+       map((resp: any) => resp.results)
      );
   }
 
@@ -35,6 +35,16 @@ export class FilmService {
     );
 
   }
+
+  getFilmByUrl(url: string) {
+
+    return from(getData(url)).pipe(
+      map((resp: any) => resp)
+    );
+
+  }
+
+  
 
   searchFilm( title: string ) {
 

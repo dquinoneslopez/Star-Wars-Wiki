@@ -17,10 +17,11 @@ export class FilmsComponent implements OnInit {
   ngOnInit() {
 
     this.loadFilms();
+    this.films.sort((a, b) => a.episode_id.localeCompare(b.episode_id));
 
   }
 
-  async loadFilms() {
+  loadFilms() {
 
     this.filmService.loadFilms()
                     .subscribe( films => this.films = films );

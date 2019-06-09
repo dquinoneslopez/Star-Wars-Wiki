@@ -4,6 +4,7 @@ import { FilmService } from '../../services/film/film.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Species } from '../../models/species.model';
 import { People } from '../../models/people.model';
+import { PeopleService } from '../../services/people/people.service';
 import { Starship } from '../../models/starship.model';
 import { Vehicle } from '../../models/vehicle.model';
 import { Planet } from '../../models/planet.model';
@@ -18,11 +19,11 @@ export class FilmComponent implements OnInit {
   species: Species[];
   starships: Starship[];
   vehicles: Vehicle[];
-  film: Film = new Film('', '', '', '', '', new Date(), this.species, this.starships, 
-                        this.vehicles, this.people, this.planets, '', '', '');
+  film: Film = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
 
   constructor(
     public filmService: FilmService,
+    public peopleService: PeopleService,
     public router: Router,
     public activatedRoute: ActivatedRoute
   ) {
@@ -38,28 +39,41 @@ export class FilmComponent implements OnInit {
 
    }
 
-  ngOnInit() {}
+  ngOnInit() {this.loadPeople();}
 
   loadFilm(id: string) {
 
-    let n_id = parseInt(id)
+    let nId = parseInt(id, 10);
 
-    if(n_id >= 1 && n_id <= 3) {
+    if (nId >= 1 && nId <= 3) {
 
-      n_id += 3;
-      id = n_id.toString();
+      nId += 3;
+      id = nId.toString();
 
-    } else if (n_id >= 4 && n_id <= 6){
+    } else if (nId >= 4 && nId <= 6){
 
-      n_id -= 3;
-      id = n_id.toString();
+      nId -= 3;
+      id = nId.toString();
 
     }
 
     this.filmService.getFilm( id )
-                    .subscribe( film => this.film = film);
+                    .subscribe( film => this.film = film );
 
-                    console.log("DATA: " + this.film);
+  }
+
+  loadPeople() {
+
+    for ( const url of this.film.characters ) {
+
+      let character = new People('', '', '', '', '', '', '', '', '', [], [], [], [], '', '', '');
+
+      this.peopleService.getPeopleByUrl( url )
+                        .subscribe( people => character = people );
+
+      this.people.push( character );
+
+    }
 
   }
 

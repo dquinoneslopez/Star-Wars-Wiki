@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { People } from '../../models/people.model';
 import { PeopleService } from '../../services/people/people.service';
+import { Film } from '../../models/film.model';
+import { FilmService } from '../../services/film/film.service';
 
 
 @Component({
@@ -11,22 +13,24 @@ import { PeopleService } from '../../services/people/people.service';
 })
 export class CarouselComponent implements OnInit {
 
-  people: People[] = [];
+  people: People[];
+  peopleFilms: [string, Film][];
   @ViewChild('carousel', {static: false}) carousel: any;
 
   constructor(
     public peopleService: PeopleService,
+    public filmService: FilmService,
     public config: NgbCarouselConfig
   ) {
 
-    config.interval = 1000;
-    config.keyboard = false;
-
+    config.interval = 5000;
+    config.keyboard = true;
+    this.loadPeople();
   }
 
   ngOnInit() {
-  
-    this.loadPeople();
+
+    this.loadPeopleFilms();
 
   }
 
@@ -34,6 +38,28 @@ export class CarouselComponent implements OnInit {
 
     this.peopleService.loadPeople()
                       .subscribe( people => this.people = people );
+
+  }
+
+  loadPeopleFilms() {
+
+    for (const character of this.people) {
+
+      for (const film of character.films) {
+
+        this.peopleFilms.push([character.name, this.getFilm(film)]);
+
+      }
+
+    }
+  }
+
+  getFilm(url: string) {
+
+    let characterFilm = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
+    this.filmService.getFilmByUrl(url).subscribe((film: any) => characterFilm = film);
+
+    return characterFilm;
 
   }
 

@@ -1,76 +1,43 @@
-<ngb-carousel #carousel *ngFor="let person of people">
-    <ng-template ngbSlide>
-        <div class="carousel-caption">
-            <div class="card">
-                <div class="card-header">
-                    {{person.name}}
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Birth</th>
-                                <th>Eye Color</th>
-                                <th>Gender</th>
-                                <th>Hair color</th>
-                                <th>Height</th>
-                                <th>Weight</th>
-                                <th>Skin color</th>
-                                <th>Homeworld</th>
-                                <th>Films</th>
-                                <th>Species</th>
-                                <th>Starships</th>
-                                <th>Vehicles</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let person of people">
-                                <td>{{person.birth_year}}</td>
-                                <td>{{person.eye_color}}</td>
-                                <td>{{person.gender}}</td>
-                                <td>{{person.hair_color}}</td>
-                                <td>{{person.height}}</td>
-                                <td>{{person.mass}}</td>
-                                <td>{{person.skin_color}}</td>
-                                <td>{{person.homeworld}}</td>
-                                <td>
-                                    Films:
-                                    <ul *ngFor="let film of person.films">
-                                        <li>Episode {{film.episode_id}} - {{film.title}}</li>
-                                    </ul>
-                                </td>
-                                <td>{{person.species}}</td>
-                                <td>
-                                    Starships:
-                                    <ul *ngFor="let starship of person.starships">
-                                        <li>{{starship.name}} - {{starship.model}}</li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    Vehicles:
-                                    <ul *ngFor="let vehicle of person.vehicles">
-                                        <li>{{vehicle.name}} - {{vehicle.model}}</li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+<ngb-carousel #carousel>
+    <ng-template ngbSlide *ngFor="let character of people">
+        <div class="card">
+            <div class="card-header">
+                {{character.name}}
             </div>
-        </div>
-    </ng-template>
-    <ng-template ngbSlide>
-        <img src="https://lorempixel.com/900/500?r=5" alt="Random second slide">
-        <div class="carousel-caption">
-            <h3>No keyboard...</h3>
-            <p>This carousel uses customized default values.</p>
-        </div>
-    </ng-template>
-    <ng-template ngbSlide>
-        <img src="https://lorempixel.com/900/500?r=6" alt="Random third slide">
-        <div class="carousel-caption">
-            <h3>And no wrap after last slide.</h3>
-            <p>This carousel uses customized default values.</p>
+            <div class="card-body">
+                <ul>
+                    <li><strong>Birth:</strong> {{character.birth_year}}</li>
+                    <li><strong>Eye Color:</strong> {{character.eye_color}}</li>
+                    <li><strong>Eye Color:</strong> {{character.gender}}</li>
+                    <li><strong>Eye Color:</strong> {{character.hair_color}}</li>
+                    <li><strong>Height:</strong> {{character.height}}</li>
+                    <li><strong>Weight:</strong> {{character.mass}}</li>
+                    <li><strong>Skin color:</strong> {{character.skin_color}}</li>
+                    <li><strong>Homeworld:</strong> {{character.homeworld}}</li>
+                    <li><strong>Species:</strong> {{character.species}}</li>
+                    <li>
+                        <strong>Films:</strong>
+                        <ul *ngFor="let film of peopleFilms">
+                            <!-- <li *ngIf="character.name === film[0]">Episode {{film[1].episode_id}} - {{film[1].title}}</li> -->
+                            <li>{{film}}</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Starships:</strong>
+                        <ul *ngFor="let starship of character.starships">
+                            <!-- <li>{{starship.name}} - {{starship.model}}</li> -->
+                            <li>{{starship}}</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Vehicles:</strong>
+                        <ul *ngFor="let vehicle of character.vehicles">
+                            <!-- <li>{{vehicle.name}} - {{vehicle.model}}</li> -->
+                            <li>{{vehicle}}</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </ng-template>
 </ngb-carousel>
