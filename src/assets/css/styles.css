@@ -8,9 +8,15 @@
     font-family: sans-serif, Helvetica, Arial;
 }
 
-body {
-    background: url(../img/background.jpg);
+html {
     height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    background: url(../img/background.jpg);
+    min-height: 100%;
 }
 
 
@@ -43,11 +49,16 @@ body {
 /*FOOTER*/
 
 footer {
-    clear: both;
+    position: absolute;
+    width: 100%;
     text-align: center;
     padding-top: 15px;
     padding-bottom: 15px;
     color: white;
     background: #000000;
     border-top: 4px solid #FFE81F;
+}
+
+.card {
+    min-height: 90%;
 }

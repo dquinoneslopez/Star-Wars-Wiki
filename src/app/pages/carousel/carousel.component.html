@@ -18,18 +18,18 @@
                     <li>
                         <strong>Films:</strong>
                         <ul *ngFor="let film of peopleFilms">
-                            <!-- <li *ngIf="character.name === film[0]">Episode {{film[1].episode_id}} - {{film[1].title}}</li> -->
-                            <li>{{film}}</li>
+                            <li *ngIf="character.name == film[0]">{{film[1]}}</li>
+                            <!-- <li>{{film}}</li> -->
                         </ul>
                     </li>
-                    <li>
+                    <li *ngIf="character.starships.length > 0">
                         <strong>Starships:</strong>
                         <ul *ngFor="let starship of character.starships">
                             <!-- <li>{{starship.name}} - {{starship.model}}</li> -->
                             <li>{{starship}}</li>
                         </ul>
                     </li>
-                    <li>
+                    <li *ngIf="character.vehicles.length > 0">
                         <strong>Vehicles:</strong>
                         <ul *ngFor="let vehicle of character.vehicles">
                             <!-- <li>{{vehicle.name}} - {{vehicle.model}}</li> -->

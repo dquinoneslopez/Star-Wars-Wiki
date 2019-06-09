@@ -14,11 +14,7 @@ import { Planet } from '../../models/planet.model';
   templateUrl: './film.component.html'
 })
 export class FilmComponent implements OnInit {
-  people: People[];
-  planets: Planet[];
-  species: Species[];
-  starships: Starship[];
-  vehicles: Vehicle[];
+  people: string[] = [];
   film: Film = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
 
   constructor(
@@ -39,7 +35,7 @@ export class FilmComponent implements OnInit {
 
    }
 
-  ngOnInit() {this.loadPeople();}
+  ngOnInit() {}
 
   loadFilm(id: string) {
 
@@ -58,7 +54,12 @@ export class FilmComponent implements OnInit {
     }
 
     this.filmService.getFilm( id )
-                    .subscribe( film => this.film = film );
+                    .subscribe( film => {
+
+                      this.film = film;
+                      this.loadPeople();
+
+                    } );
 
   }
 
@@ -67,11 +68,17 @@ export class FilmComponent implements OnInit {
     for ( const url of this.film.characters ) {
 
       let character = new People('', '', '', '', '', '', '', '', '', [], [], [], [], '', '', '');
+      const split = url.split('/');
+      const id = split[split.length - 2];
+      console.log('id: ' + id);
 
-      this.peopleService.getPeopleByUrl( url )
-                        .subscribe( people => character = people );
+      this.peopleService.getPeople( id )
+                        .subscribe( people => {
 
-      this.people.push( character );
+                          character = people;
+                          this.people.push( character.name );
+
+                        } );
 
     }
 

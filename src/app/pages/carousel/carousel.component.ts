@@ -13,8 +13,8 @@ import { FilmService } from '../../services/film/film.service';
 })
 export class CarouselComponent implements OnInit {
 
-  people: People[];
-  peopleFilms: [string, Film][];
+  people: People[] = [];
+  peopleFilms: [string, string][] = [];
   @ViewChild('carousel', {static: false}) carousel: any;
 
   constructor(
@@ -23,21 +23,20 @@ export class CarouselComponent implements OnInit {
     public config: NgbCarouselConfig
   ) {
 
-    config.interval = 5000;
+    config.interval = 10000;
     config.keyboard = true;
     this.loadPeople();
   }
 
-  ngOnInit() {
-
-    this.loadPeopleFilms();
-
-  }
+  ngOnInit() {}
 
   loadPeople() {
 
     this.peopleService.loadPeople()
-                      .subscribe( people => this.people = people );
+                      .subscribe( people => {
+                        this.people = people;
+                        this.loadPeopleFilms();
+                      } );
 
   }
 
@@ -45,26 +44,29 @@ export class CarouselComponent implements OnInit {
 
     for (const character of this.people) {
 
-      for (const film of character.films) {
+      for (const url of character.films) {
 
-        this.peopleFilms.push([character.name, this.getFilm(film)]);
+        let characterFilm = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
+        const split = url.split('/');
+        const id = split[split.length - 2];
 
+        this.filmService.getFilm(id).subscribe((film: any) => {
+
+          characterFilm = film;
+          this.peopleFilms.push([character.name, 'Episode ' + characterFilm.episode_id + ' - ' + characterFilm.title]);
+       
+        });
+        
       }
 
     }
-  }
-
-  getFilm(url: string) {
-
-    let characterFilm = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
-    this.filmService.getFilmByUrl(url).subscribe((film: any) => characterFilm = film);
-
-    return characterFilm;
 
   }
 
   pause() {
+
     this.carousel.pause();
+
   }
 
 }
