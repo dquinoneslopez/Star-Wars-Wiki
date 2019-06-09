@@ -1,32 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Vehicle } from '../../models/vehicle.model';
-import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
-import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { from } from 'rxjs';
+
+declare function getData(url: string);
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehicleService {
 
-  vehicle: Vehicle;
+  constructor() { }
 
-  constructor(
-    public http: HttpClient,
-    public router: Router
-  ) { }
-
-  loadVehicle() {
+  loadVehicles() {
 
     const url = URL_SERVICIOS + 'vehicles';
 
-    return this.http.get( url )
-                    .pipe(
-                      map( (resp: any) => {
-                        return resp.vehicles;
-                      })
-                    );
+    return from(getData(url)).pipe(
+      map((resp: any) => resp.results)
+    );
 
   }
 
@@ -34,21 +26,9 @@ export class VehicleService {
 
     const url = URL_SERVICIOS + 'vehicles/' + id;
 
-    return this.http.get(url)
-                    .pipe(
-                      map( (resp: any) => resp.vehicles)
-                    );
-
-  }
-
-  searchVehicle( name: string, model: string ) {
-
-    const url = URL_SERVICIOS + 'vehicles/?search=' + name + '&model=' + model;
-
-    return this.http.get( url )
-                    .pipe(
-                      map( (resp: any) => resp.vehicle )
-                    );
+    return from(getData(url)).pipe(
+      map((resp: any) => resp)
+    );
 
   }
 

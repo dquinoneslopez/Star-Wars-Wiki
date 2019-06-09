@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
-import { Router } from '@angular/router';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -12,10 +10,7 @@ declare function getData(url: string);
 })
 export class FilmService {
 
-  constructor(
-    public http: HttpClient,
-    public router: Router
-  ) {}
+  constructor() {}
 
   loadFilms() {
 

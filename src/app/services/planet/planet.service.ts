@@ -10,25 +10,10 @@ import { map } from 'rxjs/operators';
 })
 export class PlanetService {
   
-  planet: Planet;
-
   constructor(
     public http: HttpClient,
     public router: Router
-  ) { }
-
-  loadPlanets() {
-
-    const url = URL_SERVICIOS + 'planets';
-
-    return this.http.get( url )
-                    .pipe(
-                      map( (resp: any) => {
-                        return resp.planets;
-                      })
-                    );
-
-  }
+  ) {}
 
   getPlanet( id: string ) {
 
@@ -36,19 +21,9 @@ export class PlanetService {
 
     return this.http.get(url)
                     .pipe(
-                      map( (resp: any) => resp.planet)
+                      map( (resp: any) => resp)
                     );
 
   }
 
-  searchPlanet( name: string ) {
-
-    const url = URL_SERVICIOS + 'planets/?search=' + name;
-
-    return this.http.get( url )
-                    .pipe(
-                      map( (resp: any) => resp.planet )
-                    );
-
-  }
 }

@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { Film } from '../../models/film.model';
 import { FilmService } from '../../services/film/film.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Species } from '../../models/species.model';
 import { People } from '../../models/people.model';
 import { PeopleService } from '../../services/people/people.service';
-import { Starship } from '../../models/starship.model';
-import { Vehicle } from '../../models/vehicle.model';
-import { Planet } from '../../models/planet.model';
 
 @Component({
   selector: 'app-film',
@@ -20,7 +17,6 @@ export class FilmComponent implements OnInit {
   constructor(
     public filmService: FilmService,
     public peopleService: PeopleService,
-    public router: Router,
     public activatedRoute: ActivatedRoute
   ) {
 

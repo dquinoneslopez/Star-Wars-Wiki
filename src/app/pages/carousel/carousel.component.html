@@ -6,35 +6,44 @@
             </div>
             <div class="card-body">
                 <ul>
-                    <li><strong>Birth:</strong> {{character.birth_year}}</li>
-                    <li><strong>Eye Color:</strong> {{character.eye_color}}</li>
-                    <li><strong>Eye Color:</strong> {{character.gender}}</li>
-                    <li><strong>Eye Color:</strong> {{character.hair_color}}</li>
-                    <li><strong>Height:</strong> {{character.height}}</li>
-                    <li><strong>Weight:</strong> {{character.mass}}</li>
-                    <li><strong>Skin color:</strong> {{character.skin_color}}</li>
-                    <li><strong>Homeworld:</strong> {{character.homeworld}}</li>
-                    <li><strong>Species:</strong> {{character.species}}</li>
+                    <li><span class="font-weight-bold">Birth:</span> {{character.birth_year}}</li>
+                    <li><span class="font-weight-bold">Eye Color:</span> {{character.eye_color}}</li>
+                    <li><span class="font-weight-bold">Eye Color:</span> {{character.gender}}</li>
+                    <li><span class="font-weight-bold">Eye Color:</span> {{character.hair_color}}</li>
+                    <li><span class="font-weight-bold">Height:</span> {{character.height}}</li>
+                    <li><span class="font-weight-bold">Weight:</span> {{character.mass}}</li>
+                    <li><span class="font-weight-bold">Skin color:</span> {{character.skin_color}}</li>
+                    <span *ngFor="let planet of peoplePlanets">
+                        <li *ngIf="planet[0] == character.name">
+                            <span class="font-weight-bold">Homeworld:</span> {{planet[1]}}
+                    </li>
+                    </span>
+                    <span *ngFor="let species of peopleSpecies">
+                        <li *ngIf="species[0] == character.name">
+                            <span class="font-weight-bold">Species:</span> {{species[1]}}
+                    </li>
+                    </span>
                     <li>
-                        <strong>Films:</strong>
+                        <span class="font-weight-bold">Films:</span>
                         <ul *ngFor="let film of peopleFilms">
                             <li *ngIf="character.name == film[0]">{{film[1]}}</li>
-                            <!-- <li>{{film}}</li> -->
                         </ul>
                     </li>
                     <li *ngIf="character.starships.length > 0">
-                        <strong>Starships:</strong>
-                        <ul *ngFor="let starship of character.starships">
-                            <!-- <li>{{starship.name}} - {{starship.model}}</li> -->
-                            <li>{{starship}}</li>
+                        <span>
+                            <span class="font-weight-bold">Starships:</span>
+                        <ul *ngFor="let starship of peopleStarships">
+                            <li *ngIf="character.name == starship[0]">{{starship[1]}}</li>
                         </ul>
+                        </span>
                     </li>
                     <li *ngIf="character.vehicles.length > 0">
-                        <strong>Vehicles:</strong>
-                        <ul *ngFor="let vehicle of character.vehicles">
-                            <!-- <li>{{vehicle.name}} - {{vehicle.model}}</li> -->
-                            <li>{{vehicle}}</li>
+                        <span>
+                                <span class="font-weight-bold">Vehicles:</span>
+                        <ul *ngFor="let vehicle of peopleVehicles">
+                            <li *ngIf="character.name == vehicle[0]">{{vehicle[1]}}</li>
                         </ul>
+                        </span>
                     </li>
                 </ul>
             </div>
