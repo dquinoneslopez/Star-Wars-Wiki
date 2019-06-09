@@ -25,6 +25,7 @@ body {
 #header {
     height: 145px;
     background: rgb(0, 0, 0);
+    border-bottom: 4px solid #FFE81F;
 }
 
 #logo {
@@ -33,7 +34,7 @@ body {
 
 #logo img {
     float: left;
-    height: 145px;
+    height: 120px;
 }
 
 
@@ -43,6 +44,10 @@ body {
     margin: 0px auto;
     overflow: hidden;
     background: white;
+}
+
+.card {
+    min-height: 90%;
 }
 
 
@@ -57,8 +62,4 @@ footer {
     color: white;
     background: #000000;
     border-top: 4px solid #FFE81F;
-}
-
-.card {
-    min-height: 90%;
 }

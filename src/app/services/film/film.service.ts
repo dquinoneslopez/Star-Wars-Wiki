@@ -36,7 +36,7 @@ export class FilmService {
     const url = URL_SERVICIOS + 'films/?search=' + title;
 
     return from(getData(url)).pipe(
-      map((resp: any) => resp)
+      map((resp: any) => resp.results)
     );
 
   }

@@ -55,10 +55,10 @@ export class CarouselComponent implements OnInit {
 
     this.peopleService.loadPeople()
                       .subscribe( people => {
+
                         this.people = people;
                         this.loadPeopleData();
-                        
-                        
+
                       } );
 
   }
