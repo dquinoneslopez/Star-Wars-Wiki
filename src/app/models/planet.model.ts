@@ -1,0 +1,22 @@
+import { Species } from './species.model';
+import { Film } from './film.model';
+
+export class Planet {
+
+    constructor(
+        public name: string,
+        public diameter: string,
+        public rotation_period: string,
+        public orbital_period: string,
+        public gravity: string,
+        public population: string,
+        public climate: string,
+        public terrain: string,
+        public surface_water: string,
+        public residents: Species[],
+        public films: Film[],
+        public url: string,
+        public created: string,
+        public edited: string) {}
+        
+}

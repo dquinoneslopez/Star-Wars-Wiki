@@ -20,10 +20,10 @@ export class FilmsComponent implements OnInit {
 
   }
 
-  loadFilms() {
+  async loadFilms() {
 
     this.filmService.loadFilms()
-                     .subscribe( films => this.films = films );
+                    .subscribe( films => this.films = films );
 
   }
 
@@ -36,7 +36,7 @@ export class FilmsComponent implements OnInit {
     }
 
     this.filmService.searchFilm(title)
-                     .subscribe( films => this.films = films );
+                    .subscribe( films => this.films = films );
   }
 
 }

@@ -1,3 +1,42 @@
-<p>
-  film works!
-</p>
+<div class="row justify-content-center">
+    <div class="col-12">
+        <ng-container *ngIf="film; else elseTemplate">
+            <div class="card card-body">
+                <h3 class="card-title">Episode {{film.episode_id}} - {{film.title}}</h3>
+                <ul>
+                    <div class="row">
+                        <div class="col-6 text-left">
+                            <li>Director: {{film.director}}</li>
+                            <li>Producer: {{film.producer}}</li>
+                            <li>Release date: {{film.release_date}}</li>
+                            <li>
+                                Characters:
+                                <ul *ngFor="let person of people">
+                                    <!-- <li>{{person.name}}</li> -->
+                                </ul>
+                            </li>
+                        </div>
+                        <div class="col-6 text-left">
+                            <li>
+                                Synopsis:
+                                <p>{{film.opening_crawl}}</p>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+                        </div>
+                    </div>
+
+                </ul>
+            </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+            <div class="card card-body">
+                <h3 class="card-title">Film not Found</h3>
+                <img src="../../../assets/img/vader.png" alt="Darth Vader" class="img-fluid">
+            </div>
+        </ng-template>
+    </div>
+</div>

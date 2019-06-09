@@ -1,0 +1,76 @@
+<ngb-carousel #carousel *ngFor="let person of people">
+    <ng-template ngbSlide>
+        <div class="carousel-caption">
+            <div class="card">
+                <div class="card-header">
+                    {{person.name}}
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Birth</th>
+                                <th>Eye Color</th>
+                                <th>Gender</th>
+                                <th>Hair color</th>
+                                <th>Height</th>
+                                <th>Weight</th>
+                                <th>Skin color</th>
+                                <th>Homeworld</th>
+                                <th>Films</th>
+                                <th>Species</th>
+                                <th>Starships</th>
+                                <th>Vehicles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let person of people">
+                                <td>{{person.birth_year}}</td>
+                                <td>{{person.eye_color}}</td>
+                                <td>{{person.gender}}</td>
+                                <td>{{person.hair_color}}</td>
+                                <td>{{person.height}}</td>
+                                <td>{{person.mass}}</td>
+                                <td>{{person.skin_color}}</td>
+                                <td>{{person.homeworld}}</td>
+                                <td>
+                                    Films:
+                                    <ul *ngFor="let film of person.films">
+                                        <li>Episode {{film.episode_id}} - {{film.title}}</li>
+                                    </ul>
+                                </td>
+                                <td>{{person.species}}</td>
+                                <td>
+                                    Starships:
+                                    <ul *ngFor="let starship of person.starships">
+                                        <li>{{starship.name}} - {{starship.model}}</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    Vehicles:
+                                    <ul *ngFor="let vehicle of person.vehicles">
+                                        <li>{{vehicle.name}} - {{vehicle.model}}</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <img src="https://lorempixel.com/900/500?r=5" alt="Random second slide">
+        <div class="carousel-caption">
+            <h3>No keyboard...</h3>
+            <p>This carousel uses customized default values.</p>
+        </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <img src="https://lorempixel.com/900/500?r=6" alt="Random third slide">
+        <div class="carousel-caption">
+            <h3>And no wrap after last slide.</h3>
+            <p>This carousel uses customized default values.</p>
+        </div>
+    </ng-template>
+</ngb-carousel>
