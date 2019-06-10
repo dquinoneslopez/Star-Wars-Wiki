@@ -8,6 +8,12 @@
     font-family: sans-serif, Helvetica, Arial;
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 html {
     height: 100%;
     box-sizing: border-box;
@@ -46,8 +52,11 @@ body {
     background: white;
 }
 
-.card {
-    min-height: 90%;
+
+/*SIDEBAR*/
+
+.flex-column {
+    background: #F7F7F7;
 }
 
 

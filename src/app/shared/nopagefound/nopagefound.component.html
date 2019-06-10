@@ -1,16 +1,17 @@
+<app-header></app-header>
 <section class="container-fluid">
-    <div class="row">
-        <div class="col-12 center">
-            <h1>404</h1>
-            <h3 class="text-uppercase">Page Not Found !</h3>
-            <div class="row center">
-                <div class="col-8">
+    <div class="row justify-content-center">
+        <div class="col-6 center">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1>404</h1>
+                    <h3 class="text-uppercase">Page Not Found!</h3>
                     <img class="img-fluid" src="../../../assets/img/vader.png" alt="Darth Vader">
+                    <h3 class="text-muted m-t-30 m-b-30">I find your lack of navigation disturbing.</h3>
+                    <a routerLink="/" class="btn btn-info btn-rounded" ngbButtonLabel>Back</a>
                 </div>
             </div>
-            <p class="text-muted m-t-30 m-b-30">I find your lack of navigation disturbing.</p>
-            <a routerLink="/" class="btn btn-info btn-rounded" ngbButtonLabel>Volver a Inicio</a>
         </div>
-        <footer class="footer text-center">Daniel Quiñones López ©{{ year }}</footer>
     </div>
 </section>
+<app-footer></app-footer>

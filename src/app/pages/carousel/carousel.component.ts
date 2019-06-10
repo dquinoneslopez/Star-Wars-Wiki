@@ -43,7 +43,7 @@ export class CarouselComponent implements OnInit {
     this.peopleStarships = [];
     this.peopleVehicles = [];
 
-    config.interval = 10000;
+    config.interval = 4000;
     config.keyboard = true;
 
     this.loadPeople();

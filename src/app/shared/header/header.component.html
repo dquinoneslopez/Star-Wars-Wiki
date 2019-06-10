@@ -1,22 +1,14 @@
 <header id="header">
 
-    <nav class="navbar navbar-dark navbar-expand-md">
-        <a href="index.html" class="navbar-brand" id="logo">
+    <nav class="navbar navbar-dark">
+        <a href="index.html" class="navbar-brand d-block d-md-inline" id="logo">
             <img class="img-fluid" src="assets/img/starwarslogo.svg" alt="Star Wars Logo Homepage">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <a class="nav-link" href="javascript:void(0)">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </a>
-                <form class="form-inline my-2 my-lg-0">
-                    <input #input (keyup.enter)="search( input.value )" type="search" class="form-control mr-sm-2" placeholder="Type a title and enter">
-                </form>
-            </ul>
-        </div>
+        <ul class="navbar-nav ml-auto d-block d-md-inline">
+            <form class="form-inline my-2 my-lg-0">
+                <input #input (keyup.enter)="search( input.value )" type="search" class="form-control mr-sm-2" placeholder="Type a title and enter">
+            </form>
+        </ul>
     </nav>
 
 </header>

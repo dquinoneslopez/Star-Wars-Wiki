@@ -6,11 +6,11 @@
                 <ul>
                     <div class="row">
                         <div class="col-6 text-left">
-                            <li>Director: {{film.director}}</li>
-                            <li>Producer: {{film.producer}}</li>
-                            <li>Release date: {{film.release_date}}</li>
+                            <li><span class="font-weight-bold">Director:</span> {{film.director}}</li>
+                            <li><span class="font-weight-bold">Producer:</span> {{film.producer}}</li>
+                            <li><span class="font-weight-bold">Release date:</span> {{film.release_date}}</li>
                             <li>
-                                Characters:
+                                <span class="font-weight-bold">Characters:</span>
                                 <ul *ngFor="let character of people">
                                     <li>{{character}}</li>
                                 </ul>
@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-6 text-left">
                             <li>
-                                Synopsis:
+                                <span class="font-weight-bold">Synopsis:</span>
                                 <p>{{film.opening_crawl}}</p>
                             </li>
                         </div>

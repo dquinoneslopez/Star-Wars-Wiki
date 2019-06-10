@@ -6,12 +6,15 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HistoryComponent } from './history/history.component';
+
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     NopagefoundComponent,
+    HistoryComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     FooterComponent,
     NopagefoundComponent,
+    HistoryComponent,
   ]
 })
 export class SharedModule { }
