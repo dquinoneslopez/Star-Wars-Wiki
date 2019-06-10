@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
-  SharedService,
   FilmService,
+  HistoryService,
   PeopleService,
   PlanetService,
+  SharedService,
   SpeciesService,
   StarshipService,
   VehicleService,
@@ -19,10 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
   ],
   providers: [
-    SharedService,
     FilmService,
+    HistoryService,
     PeopleService,
     PlanetService,
+    SharedService,
     SpeciesService,
     StarshipService,
     VehicleService,

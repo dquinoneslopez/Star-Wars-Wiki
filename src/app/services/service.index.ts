@@ -6,3 +6,4 @@ export { StarshipService } from './starship/starship.service';
 export { VehicleService } from './vehicle/vehicle.service';
 
 export { SharedService } from './shared/shared.service';
+export { HistoryService } from './shared/history.service';

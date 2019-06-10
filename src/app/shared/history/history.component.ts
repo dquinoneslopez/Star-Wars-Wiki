@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { HistoryService } from '../../services/shared/history.service';
 
 
 @Component({
@@ -8,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryComponent implements OnInit {
 
-  constructor() { }
+  private history: string[];
 
-  ngOnInit() {
+  constructor(
+    private router: Router,
+    private historyService: HistoryService
+  ) {
+
+    if (this.historyService.loadHistory() != null) {
+
+      this.history = this.historyService.loadHistory();
+      this.history.reverse();
+
+    } else {
+
+      this.history = [];
+
+    }
+    this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
+                      .subscribe(event => {
+
+      this.history.push(event.url);
+      this.historyService.saveHistory(this.history);
+
+    });
+
   }
+
+  ngOnInit() { }
 
 }

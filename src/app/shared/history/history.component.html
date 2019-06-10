@@ -1,14 +1,10 @@
-<ul class="nav flex-column text-left">
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " href="#">Link</a>
-  </li>
-</ul>
+<div class="row" id="sidebar">
+    <div class="col-12">
+        <h4>Pages visited:</h4>
+        <ul class="nav flex-column text-left" *ngFor="let url of history.reverse()">
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="[url]">- {{url}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
