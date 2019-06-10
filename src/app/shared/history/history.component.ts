@@ -20,7 +20,6 @@ export class HistoryComponent implements OnInit {
     if (this.historyService.loadHistory() != null) {
 
       this.history = this.historyService.loadHistory();
-      this.history.reverse();
 
     } else {
 
