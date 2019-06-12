@@ -28,6 +28,22 @@ export class HistoryService {
       const history = JSON.parse( localStorage.getItem( 'history' ) );
       return history;
 
+    } else {
+
+      localStorage.setItem( 'history', '' );
+
     }
+  }
+
+  clearHistory() {
+
+    if ( localStorage.getItem('history') ) {
+
+      localStorage.removeItem('history');
+
+    }
+
+
+
   }
 }

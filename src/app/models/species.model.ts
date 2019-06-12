@@ -3,21 +3,23 @@ import { Film } from './film.model';
 
 export class Species {
 
-    constructor (
-        public name?: string,
-        public classification?: string,
-        public designation?: string,
-        public average_height?: string,
-        public average_lifespan?: string,
-        public eye_colors?: string,
-        public hair_colors?: string,
-        public skin_colors?: string,
-        public language?: string,
-        public homeworld?: string,
-        public people?: string[],
-        public films?: string[],
-        public url?: string,
-        public created?: string,
-        public edited?: string) {}
+    constructor(
+        private name: string,
+        private classification?: string,
+        private designation?: string,
+        private average_height?: string,
+        private average_lifespan?: string,
+        private eye_colors?: string,
+        private hair_colors?: string,
+        private skin_colors?: string,
+        private language?: string,
+        private homeworld?: string,
+        private people?: string[],
+        private films?: string[],
+        private url?: string,
+        private created?: string,
+        private edited?: string) {}
 
+    getName() { return this.name; }
+    
 }

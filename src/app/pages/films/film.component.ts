@@ -11,13 +11,21 @@ import { PeopleService } from '../../services/people/people.service';
   templateUrl: './film.component.html'
 })
 export class FilmComponent implements OnInit {
-  people: string[] = [];
-  film: Film = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
 
+  private people: string[] = [];
+  private film: Film = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
+
+  /**
+   *Creates an instance of FilmComponent. Also takes the url get param and load the film's info
+   * @param {FilmService} filmService
+   * @param {PeopleService} peopleService
+   * @param {ActivatedRoute} activatedRoute
+   * @memberof FilmComponent
+   */
   constructor(
-    public filmService: FilmService,
-    public peopleService: PeopleService,
-    public activatedRoute: ActivatedRoute
+    private filmService: FilmService,
+    private peopleService: PeopleService,
+    private activatedRoute: ActivatedRoute
   ) {
 
     activatedRoute.params
@@ -33,6 +41,12 @@ export class FilmComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * Makes a call to FilmService to retrive the film's info and loads the film's characters
+   *
+   * @param {string} id
+   * @memberof FilmComponent
+   */
   loadFilm(id: string) {
 
     let nId = parseInt(id, 10);
@@ -52,27 +66,31 @@ export class FilmComponent implements OnInit {
     this.filmService.getFilm( id )
                     .subscribe( film => {
 
-                      this.film = film;
+                      this.film = Object.assign(this.film, film);
                       this.loadPeople();
 
                     } );
 
   }
 
+  /**
+   * Makes a call to PeopleService and retrive the characters's names
+   *
+   * @memberof FilmComponent
+   */
   loadPeople() {
 
-    for ( const url of this.film.characters ) {
+    for ( const url of this.film.getCharacters() ) {
 
-      let character = new People('', '', '', '', '', '', '', '', '', [], [], [], [], '', '', '');
+      let character = new People('', '', '', '', '', '', '', '', '', [], [], [], []);
       const split = url.split('/');
       const id = split[split.length - 2];
-      console.log('id: ' + id);
 
       this.peopleService.getPeople( id )
                         .subscribe( people => {
 
-                          character = people;
-                          this.people.push( character.name );
+                          character = Object.assign(character, people);
+                          this.people.push( character.getName() );
 
                         } );
 

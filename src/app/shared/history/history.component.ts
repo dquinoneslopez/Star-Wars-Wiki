@@ -15,7 +15,14 @@ export class HistoryComponent implements OnInit {
   constructor(
     private router: Router,
     private historyService: HistoryService
-  ) {
+  ) {}
+
+  /**
+   * Loads the stored history if there is one and then listen for new navigation events
+   *
+   * @memberof HistoryComponent
+   */
+  ngOnInit() {
 
     if (this.historyService.loadHistory() != null) {
 
@@ -24,8 +31,10 @@ export class HistoryComponent implements OnInit {
     } else {
 
       this.history = [];
+      this.history.push(this.router.url);
 
     }
+
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
                       .subscribe(event => {
 
@@ -34,8 +43,18 @@ export class HistoryComponent implements OnInit {
 
     });
 
-  }
+   }
 
-  ngOnInit() { }
+  /**
+   * Clear the history stored in LocalStorage
+   *
+   * @memberof HistoryComponent
+   */
+  clearHistory() {
+
+    this.historyService.clearHistory();
+    this.ngOnInit();
+
+  }
 
 }

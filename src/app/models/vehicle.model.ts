@@ -1,24 +1,24 @@
-import { Film } from './film.model';
-import { People } from './people.model';
-
 export class Vehicle {
 
     constructor (
-        public name?: string,
-        public model?: string,
-        public vehicle_class?: string,
-        public manufacturer?: string,
-        public length?: string,
-        public cost_in_credits?: string,
-        public crew?: string,
-        public passengers?: string,
-        public max_atmosphering_speed?: string,
-        public cargo_capacity?: string,
-        public consumables?: string,
-        public films?: string[],
-        public pilots?: string[],
-        public url?: string,
-        public created?: string,
-        public edited?: string) {}
+        private name: string,
+        private model: string,
+        private vehicle_class?: string,
+        private manufacturer?: string,
+        private length?: string,
+        private cost_in_credits?: string,
+        private crew?: string,
+        private passengers?: string,
+        private max_atmosphering_speed?: string,
+        private cargo_capacity?: string,
+        private consumables?: string,
+        private films?: string[],
+        private pilots?: string[],
+        private url?: string,
+        private created?: string,
+        private edited?: string) {}
+    
+    getName() { return this.name; }
 
+    getModel() { return this.model; }
 }

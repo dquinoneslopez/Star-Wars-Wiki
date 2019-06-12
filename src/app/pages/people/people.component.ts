@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { People } from '../../models/people.model';
 import { PeopleService } from '../../services/people/people.service';
+import { cloneDeep } from 'lodash';
+
 
 @Component({
   selector: 'app-people',
@@ -8,10 +10,10 @@ import { PeopleService } from '../../services/people/people.service';
 })
 export class PeopleComponent implements OnInit {
 
-  people: People[];
+  private people: People[];
 
   constructor(
-    public peopleService: PeopleService
+    private peopleService: PeopleService
   ) { }
 
   ngOnInit() {
@@ -20,10 +22,15 @@ export class PeopleComponent implements OnInit {
 
   }
 
+  /**
+   * Makes a call to PeopleService and retrieves the characters from the Star Wars API
+   *
+   * @memberof PeopleComponent
+   */
   loadPeople() {
 
     this.peopleService.loadPeople()
-                      .subscribe( people => this.people = people );
+                      .subscribe( people => this.people = cloneDeep(people) );
 
   }
 

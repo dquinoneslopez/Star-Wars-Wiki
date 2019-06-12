@@ -1,5 +1,10 @@
 # StarWarsWiki
 
+- La aplicación muestra en un sidebar las páginas visitadas por el usuario. 
+- En la página principal un carousel con las fichas de los personajes. Si se hace click en él, se puede cambiar de slide con el teclado.
+- El cuadro de búsqueda permite buscar películas por el título, mostrando en una nueva página el resultado de la búsqueda y que consistirá en enlaces a las fichas de cada película encontrada.
+- La ficha de una película incluye un botón que devuelve al usuario a un listado de todas las películas.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
 ## Development server

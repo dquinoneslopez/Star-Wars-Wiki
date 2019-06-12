@@ -1,26 +1,26 @@
-import { Film } from './film.model';
-import { People } from './people.model';
-
 export class Starship {
 
-    constructor (
-        public name?: string,
-        public model?: string,
-        public starship_class?: string,
-        public manufacturer?: string,
-        public cost_in_credits?: string,
-        public length?: string,
-        public crew?: string,
-        public passengers?: string,
-        public max_atmosphering_speed?: string,
-        public hyperdrive_rating?: string,
-        public MGLT?: string,
-        public cargo_capacity?: string,
-        public consumables?: string,
-        public films?: string[],
-        public pilots?: string[],
-        public url?: string,
-        public created?: string,
-        public edited?: string) {}
+    constructor(
+        private name: string,
+        private model: string,
+        private starship_class?: string,
+        private manufacturer?: string,
+        private cost_in_credits?: string,
+        private length?: string,
+        private crew?: string,
+        private passengers?: string,
+        private max_atmosphering_speed?: string,
+        private hyperdrive_rating?: string,
+        private MGLT?: string,
+        private cargo_capacity?: string,
+        private consumables?: string,
+        private films?: string[],
+        private pilots?: string[],
+        private url?: string,
+        private created?: string,
+        private edited?: string) {}
+    
+    getName() { return this.name; }
+    getModel() { return this.model; }
 
 }

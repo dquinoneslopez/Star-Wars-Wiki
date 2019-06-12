@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Planet } from '../../models/planet.model';
 import { PlanetService } from '../../services/planet/planet.service';
 
 @Component({
   selector: 'app-planets',
-  templateUrl: './planets.component.html',
+  templateUrl: './planets.component.html'
 })
 export class PlanetsComponent implements OnInit {
 
@@ -24,6 +23,12 @@ export class PlanetsComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Makes a call to PlanetService and retrieves a planet by it id
+   *
+   * @param {string} id
+   * @memberof PlanetsComponent
+   */
   getPlanet(id: string) {
 
     this.planetService.getPlanet(id)

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { URL_SERVICIOS } from 'src/app/config/config';
 import { Film } from '../../models/film.model';
 import { FilmService } from '../../services/film/film.service';
-import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -12,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class SearchComponent implements OnInit {
 
-  films: Film[];
+  private films: Film[] = [];
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -27,17 +25,40 @@ export class SearchComponent implements OnInit {
 
                   });
 
-    this.films = [];
-
    }
 
   ngOnInit() {
   }
 
+  /**
+   * Makes a call to FilmService and retrives the searched film by its title
+   *
+   * @param {string} term
+   * @memberof SearchComponent
+   */
   search( term: string) {
 
     this.filmService.searchFilm(term)
-                      .subscribe(films => this.films = films);
+                      .subscribe(films => {
+                        
+                        for (const film of films) {
+
+                          this.films.push(new Film(film.title,
+                                                   film.episode_id,
+                                                   film.opening_crawl,
+                                                   film.director,
+                                                   film.producer,
+                                                   film.release_date,
+                                                   film.species,
+                                                   film.starships,
+                                                   film.vehicles,
+                                                   film.characters,
+                                                   film.planets)
+                                          );
+
+                        }
+
+                      });
 
   }
 

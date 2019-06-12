@@ -15,6 +15,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Redirects to the SearchComponent passing the searched film in the url
+   *
+   * @param {string} term
+   * @memberof HeaderComponent
+   */
   search( term: string ) {
 
     this.router.navigate( ['/search', term] );

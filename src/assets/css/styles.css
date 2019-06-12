@@ -3,33 +3,30 @@
 /*GENERALES*/
 
 * {
-    padding: 0px;
-    margin: 0px;
     font-family: sans-serif, Helvetica, Arial;
 }
 
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
+html,
+body {
+    min-height: 100%;
 }
 
 html {
-    height: 100%;
     box-sizing: border-box;
 }
 
 body {
-    position: relative;
     background: url(../img/background.jpg);
-    min-height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: calc(12px + .36vw);
 }
 
 
 /*HEADER*/
 
 #header {
-    height: 145px;
+    height: calc(10% + 1vh);
     background: rgb(0, 0, 0);
     border-bottom: 4px solid #FFE81F;
 }
@@ -40,7 +37,7 @@ body {
 
 #logo img {
     float: left;
-    height: 120px;
+    height: calc(120px + 1vh);
 }
 
 
@@ -50,6 +47,13 @@ body {
     margin: 0px auto;
     overflow: hidden;
     background: white;
+    flex: 1 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
@@ -63,7 +67,6 @@ body {
 /*FOOTER*/
 
 footer {
-    position: absolute;
     width: 100%;
     text-align: center;
     padding-top: 15px;
@@ -71,4 +74,47 @@ footer {
     color: white;
     background: #000000;
     border-top: 4px solid #FFE81F;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (min-width: 769px) {
+    /* Design for desktop */
+    .col-1 {
+        width: 8.33%;
+    }
+    .col-2 {
+        width: 16.66%;
+    }
+    .col-3 {
+        width: 25%;
+    }
+    .col-4 {
+        width: 33.33%;
+    }
+    .col-5 {
+        width: 41.66%;
+    }
+    .col-6 {
+        width: 50%;
+    }
+    .col-7 {
+        width: 58.33%;
+    }
+    .col-8 {
+        width: 66.66%;
+    }
+    .col-9 {
+        width: 75%;
+    }
+    .col-10 {
+        width: 83.33%;
+    }
+    .col-11 {
+        width: 91.66%;
+    }
+    .col-12 {
+        width: 100%;
+    }
 }

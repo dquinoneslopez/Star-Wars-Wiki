@@ -3,14 +3,14 @@
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title">Films</h4>
+                <h4 class="card-title text-center">Search</h4>
 
                 <table class="table table-striped" *ngIf="films.length > 0">
                     <tbody>
-                        <tr *ngFor="let film of films" class="pointer">
-                            <a [routerLink]="['/films/film/', film.episode_id]">
+                        <tr *ngFor="let film of films" class="text-center">
+                            <a [routerLink]="['/films/film/', film.getEpisodeId()]">
                                 <td>
-                                    Episodio {{ film.episode_id }} - {{ film.title }}
+                                    Episode {{ film.getEpisodeId() }} - {{ film.getTitle() }}
                                 </td>
                             </a>
                         </tr>

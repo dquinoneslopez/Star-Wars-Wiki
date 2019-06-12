@@ -2,13 +2,13 @@
     <div class="col-12">
         <ng-container *ngIf="film; else elseTemplate">
             <div class="card card-body">
-                <h3 class="card-title">Episode {{film.episode_id}} - {{film.title}}</h3>
+                <h3 class="card-title text-center">Episode {{film.getEpisodeId()}} - {{film.getTitle()}}</h3>
                 <ul>
                     <div class="row">
-                        <div class="col-6 text-left">
-                            <li><span class="font-weight-bold">Director:</span> {{film.director}}</li>
-                            <li><span class="font-weight-bold">Producer:</span> {{film.producer}}</li>
-                            <li><span class="font-weight-bold">Release date:</span> {{film.release_date}}</li>
+                        <div class="col-6">
+                            <li><span class="font-weight-bold">Director:</span> {{film.getDirector()}}</li>
+                            <li><span class="font-weight-bold">Producer:</span> {{film.getProducer()}}</li>
+                            <li><span class="font-weight-bold">Release date:</span> {{film.getReleaseDate()}}</li>
                             <li>
                                 <span class="font-weight-bold">Characters:</span>
                                 <ul *ngFor="let character of people">
@@ -16,10 +16,10 @@
                                 </ul>
                             </li>
                         </div>
-                        <div class="col-6 text-left">
+                        <div class="col-6">
                             <li>
                                 <span class="font-weight-bold">Synopsis:</span>
-                                <p>{{film.opening_crawl}}</p>
+                                <p>{{film.getOpeningCrawl()}}</p>
                             </li>
                         </div>
                     </div>

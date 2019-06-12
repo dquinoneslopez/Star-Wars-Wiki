@@ -1,4 +1,4 @@
-export class People {
+export class Character {
 
     constructor(
         private name: string,
@@ -9,18 +9,15 @@ export class People {
         private height: string,
         private mass: string,
         private skin_color: string,
-        private homeworld: string,
+        private homeworld: string[],
         private films: string[],
         private species: string[],
         private starships: string[],
-        private vehicles: string[],
-        private url?: string,
-        private created?: string,
-        private edited?: string) {}
+        private vehicles: string[]) {}
 
     getName() { return this.name; }
 
-    getBirhtYear() { return this.birth_year; }
+    getBirthYear() { return this.birth_year; }
 
     getEyeColor() { return this.eye_color; }
 
@@ -34,7 +31,7 @@ export class People {
 
     getSkinColor() { return this.skin_color; }
 
-    getHomeWorld() { return this.homeworld; }
+    getHomeworld() { return this.homeworld[0]; }
 
     getFilms() { return this.films; }
 
@@ -43,6 +40,5 @@ export class People {
     getStarships() { return this.starships; }
 
     getVehicles() { return this.vehicles; }
-
 
 }

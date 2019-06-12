@@ -4,19 +4,20 @@ import { Film } from './film.model';
 export class Planet {
 
     constructor(
-        public name?: string,
-        public diameter?: string,
-        public rotation_period?: string,
-        public orbital_period?: string,
-        public gravity?: string,
-        public population?: string,
-        public climate?: string,
-        public terrain?: string,
-        public surface_water?: string,
-        public residents?: string[],
-        public films?: string[],
-        public url?: string,
-        public created?: string,
-        public edited?: string) {}
+        private name: string,
+        private diameter?: string,
+        private rotation_period?: string,
+        private orbital_period?: string,
+        private gravity?: string,
+        private population?: string,
+        private climate?: string,
+        private terrain?: string,
+        private surface_water?: string,
+        private residents?: string[],
+        private films?: string[],
+        private url?: string,
+        private created?: string,
+        private edited?: string) {}
         
+    getName() { return this.name; }
 }

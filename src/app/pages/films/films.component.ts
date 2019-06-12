@@ -8,19 +8,24 @@ import { FilmService } from '../../services/service.index';
 })
 export class FilmsComponent implements OnInit {
 
-  films: Film[] = [];
+  private films: Film[] = [];
 
   constructor(
-    public filmService: FilmService
+    private filmService: FilmService
   ) { }
 
   ngOnInit() {
 
     this.loadFilms();
-    this.films.sort((a, b) => a.episode_id.localeCompare(b.episode_id));
+    
 
   }
 
+  /**
+   * MAkes a call to FilmService and retrieves the information of the movies in the Star Wars API
+   *
+   * @memberof FilmsComponent
+   */
   loadFilms() {
 
     this.filmService.loadFilms()
@@ -28,6 +33,12 @@ export class FilmsComponent implements OnInit {
 
   }
 
+  /**
+   * Makes a call to FilmService to search for a given film's title
+   *
+   * @param {string} title
+   * @memberof FilmsComponent
+   */
   searchFilm(title: string) {
 
     if ( title.length <= 0 ) {

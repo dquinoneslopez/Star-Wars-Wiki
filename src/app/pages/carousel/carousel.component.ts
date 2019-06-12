@@ -3,13 +3,14 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 
 import { People } from '../../models/people.model';
 import { PeopleService } from '../../services/people/people.service';
-import { Film } from '../../models/film.model';
 import { FilmService } from '../../services/film/film.service';
 import { PlanetService } from '../../services/planet/planet.service';
 import { SpeciesService } from '../../services/species/species.service';
 import { StarshipService } from '../../services/starship/starship.service';
 import { VehicleService } from '../../services/vehicle/vehicle.service';
-
+import { Character } from '../../models/character.model';
+import { Film } from 'src/app/models/film.model';
+import { Planet } from 'src/app/models/planet.model';
 
 @Component({
   selector: 'app-carousel',
@@ -18,154 +19,259 @@ import { VehicleService } from '../../services/vehicle/vehicle.service';
 })
 export class CarouselComponent implements OnInit {
 
-  people: People[];
-  peopleFilms: [string, string][];
-  peoplePlanets: [string, string][];
-  peopleSpecies: [string, string][];
-  peopleStarships: [string, string][];
-  peopleVehicles: [string, string][];
   @ViewChild('carousel', {static: false}) carousel: any;
 
-  constructor(
-    public peopleService: PeopleService,
-    public filmService: FilmService,
-    public planetService: PlanetService,
-    public speciesService: SpeciesService,
-    public starshipService: StarshipService,
-    public vehicleService: VehicleService,
-    public config: NgbCarouselConfig
-  ) {
+  private characters: Character[] = [];
+  private people: People[] = [];
 
-    this.people = [];
-    this.peopleFilms = [];
-    this.peoplePlanets = [];
-    this.peopleSpecies = [];
-    this.peopleStarships = [];
-    this.peopleVehicles = [];
+  constructor(
+    private peopleService: PeopleService,
+    private filmService: FilmService,
+    private planetService: PlanetService,
+    private speciesService: SpeciesService,
+    private starshipService: StarshipService,
+    private vehicleService: VehicleService,
+    private config: NgbCarouselConfig
+  ) {
 
     config.interval = 4000;
     config.keyboard = true;
 
-    this.loadPeople();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
 
+    this.loadPeople();
+
+  }
+
+  /**
+   * Getter method for the member array "characters"
+   *
+   * @returns  Character[]
+   * @memberof CarouselComponent
+   */
+  getCharacters() {
+
+    return this.characters;
+
+  }
+
+  /**
+   * Load all the characters retrieved from the Star Wars API into the "people" array and 
+   * then their info simplified into the member array "characters".
+   *
+   * @memberof CarouselComponent
+   */
   loadPeople() {
 
     this.peopleService.loadPeople()
                       .subscribe( people => {
 
-                        this.people = people;
+                        for ( const character of people) {
+
+                          this.people.push(new People(character.name,
+                                                      character.birth_year,
+                                                      character.eye_color,
+                                                      character.gender,
+                                                      character.hair_color,
+                                                      character.height,
+                                                      character.mass,
+                                                      character.skin_color,
+                                                      character.homeworld,
+                                                      character.films,
+                                                      character.species,
+                                                      character.starships,
+                                                      character.vehicles));
+                        }
+
                         this.loadPeopleData();
 
                       } );
 
   }
 
+  /**
+   * Load the simplified info of the array "people" into the member array "characters"
+   *
+   * @memberof CarouselComponent
+   */
   loadPeopleData() {
 
-    for (const character of this.people) {
+    for (const characterPeople of this.people) {
 
-      this.loadPeopleFilms(character);
-      this.loadPeoplePlanets(character);
-      this.loadPeopleSpecies(character);
-      this.loadPeopleStarships(character);
-      this.loadPeopleVehicles(character);
+      const character = new Character(
+        characterPeople.getName(),
+        characterPeople.getBirhtYear(),
+        characterPeople.getEyeColor(),
+        characterPeople.getGender(),
+        characterPeople.getHairColor(),
+        characterPeople.getHeight(),
+        characterPeople.getMass(),
+        characterPeople.getSkinColor(),
+        this.loadPeopleHomeworld(characterPeople),
+        this.loadPeopleFilms(characterPeople),
+        this.loadPeopleSpecies(characterPeople),
+        this.loadPeopleStarships(characterPeople),
+        this.loadPeopleVehicles(characterPeople)
+      );
+
+      this.characters.push(character);
 
     }
 
   }
 
-  loadPeopleFilms(character: People) {
+  /**
+   * Returns an array with the character's movie titles
+   *
+   * @param {People} people
+   * @returns string[]
+   * @memberof CarouselComponent
+   */
+  loadPeopleFilms(people: People) {
 
-    for (const characterUrl of character.films) {
+    const characterFilms = [];
 
-      let characterFilm = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
-      const split = characterUrl.split('/');
+    for (const filmUrl of people.getFilms()) {
+
+      const split = filmUrl.split('/');
       const id = split[split.length - 2];
 
       this.filmService.getFilm(id).subscribe((film: any) => {
 
-        characterFilm = film;
-        this.peopleFilms.push([character.name, 'Episode ' + characterFilm.episode_id + ' - ' + characterFilm.title]);
+        const characterFilm = new Film(film.title,
+                                       film.episode_id,
+                                       film.opening_crawl,
+                                       film.director,
+                                       film.producer,
+                                       film.release_date,
+                                       film.species,
+                                       film.starships,
+                                       film.vehicles,
+                                       film.characters,
+                                       film.planets);
+
+        const characterFilmTitle = 'Episode ' + characterFilm.getEpisodeId() + ' - ' + characterFilm.getTitle();
+
+        characterFilms.push(characterFilmTitle);
 
       });
 
     }
 
+    return characterFilms;
+
   }
 
-  loadPeoplePlanets(character: People) {
+  /**
+   * Returns an array with the character's homeworld
+   *
+   * @param {People} character
+   * @returns string[]
+   * @memberof CarouselComponent
+   */
+  loadPeopleHomeworld(character: People) {
 
-    const homeworldUrl = character.homeworld;
+    const homeworldUrl = character.getHomeWorld();
     const homeworldSplit = homeworldUrl.split('/');
     const homeworldId = homeworldSplit[homeworldSplit.length - 2];
 
-    let characterPlanet = '';
+    const characterPlanet = [];
 
     this.planetService.getPlanet(homeworldId).subscribe((planet: any) => {
 
-      characterPlanet = planet.name;
-      this.peoplePlanets.push([character.name, characterPlanet]);
+      const characterPlanetName = new Planet(planet.name);
+
+      characterPlanet.push(characterPlanetName.getName());
 
     });
 
+    return characterPlanet;
+
   }
 
+  /**
+   * Returns an array with the character's species
+   *
+   * @param {People} character
+   * @returns string[]
+   * @memberof CarouselComponent
+   */
   loadPeopleSpecies(character: People) {
 
-    for (const url of character.species) {
+    const characterSpecies = [];
+
+    for (const url of character.getSpecies()) {
 
       const speciesSplit = url.split('/');
       const speciesId = speciesSplit[speciesSplit.length - 2];
-      let characterSpecies = '';
 
       this.speciesService.getSpecies(speciesId).subscribe((species: any) => {
 
-        characterSpecies = species.name;
-        this.peopleSpecies.push([character.name, characterSpecies]);
+        characterSpecies.push(species.name);
 
       });
 
     }
+
+    return characterSpecies;
+
   }
 
+  /**
+   * Returns an array with the character's starships
+   *
+   * @param {People} character
+   * @returns string[]
+   * @memberof CarouselComponent
+   */
   loadPeopleStarships(character: People) {
 
-    for (const url of character.starships) {
+    const characterStarships = [];
+
+    for (const url of character.getStarships()) {
 
       const starshipSplit = url.split('/');
       const starshipId = starshipSplit[starshipSplit.length - 2];
-      let characterStarship = '';
 
       this.starshipService.getStarship(starshipId).subscribe((starship: any) => {
 
-        characterStarship = starship.name + ' - ' + starship.model;
-        this.peopleStarships.push([character.name, characterStarship]);
+        characterStarships.push(starship.name + ' - ' + starship.model);
 
       });
 
     }
+
+    return characterStarships;
 
   }
 
+  /**
+   * Returns an array with the character's vehicles
+   *
+   * @param {People} character
+   * @returns string[]
+   * @memberof CarouselComponent
+   */
   loadPeopleVehicles(character: People) {
 
-    for (const url of character.vehicles) {
+    const characterVehicles = [];
+
+    for (const url of character.getVehicles()) {
 
       const vehicleSplit = url.split('/');
       const vehicleId = vehicleSplit[vehicleSplit.length - 2];
-      let characterVehicle = '';
 
       this.vehicleService.getVehicle(vehicleId).subscribe((vehicle: any) => {
 
-        characterVehicle = vehicle.name + ' - ' + vehicle.model;
-        this.peopleVehicles.push([character.name, characterVehicle]);
+        characterVehicles.push(vehicle.name + ' - ' + vehicle.model);
 
       });
 
     }
+
+    return characterVehicles;
 
   }
 

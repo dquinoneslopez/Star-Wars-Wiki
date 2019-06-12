@@ -26,7 +26,6 @@ import { SearchComponent } from './search/search.component';
     PrincipalComponent,
     CarouselComponent,
     SearchComponent,
-    //BusquedaComponent
   ],
   imports: [
     CommonModule,
