@@ -1,0 +1,1 @@
+function getData(e){return promisedRequest(e).then(e=>JSON.parse(e)).catch(e=>console.log(e))}function promisedRequest(e){return new Promise(function(t,n){const o=new XMLHttpRequest;o.open("GET",e,!0),o.onload=function(){200===o.status?t(o.response):n(o.statusText)},o.onerror=function(){n(Error("Network Error"))},o.send()})}
