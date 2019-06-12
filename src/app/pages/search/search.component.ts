@@ -10,7 +10,7 @@ import { FilmService } from '../../services/film/film.service';
 })
 export class SearchComponent implements OnInit {
 
-  private films: Film[] = [];
+  public films: Film[] = [];
 
   constructor(
     public activatedRoute: ActivatedRoute,

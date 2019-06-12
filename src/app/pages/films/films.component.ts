@@ -8,7 +8,7 @@ import { FilmService } from '../../services/service.index';
 })
 export class FilmsComponent implements OnInit {
 
-  private films: Film[] = [];
+  public films: Film[] = [];
 
   constructor(
     private filmService: FilmService

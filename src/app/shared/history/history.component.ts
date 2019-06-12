@@ -10,7 +10,7 @@ import { HistoryService } from '../../services/shared/history.service';
 })
 export class HistoryComponent implements OnInit {
 
-  private history: string[];
+  public history: string[];
 
   constructor(
     private router: Router,

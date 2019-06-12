@@ -13,7 +13,7 @@ import { PeopleService } from '../../services/people/people.service';
 export class FilmComponent implements OnInit {
 
   private people: string[] = [];
-  private film: Film = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
+  public film: Film = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
 
   /**
    *Creates an instance of FilmComponent. Also takes the url get param and load the film's info
