@@ -1,8 +1,16 @@
-function getData(url) {
+async function getData(url) {
 
-    return promisedRequest(url)
-        .then(res => JSON.parse(res))
-        .catch(error => console.log(error));
+    try {
+
+        const res = await promisedRequest(url);
+
+        return JSON.parse(res);
+    }
+    catch (error) {
+
+        return console.log(error);
+        
+    }
 
 }
 

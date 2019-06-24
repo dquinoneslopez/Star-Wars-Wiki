@@ -17,9 +17,10 @@ export class SpeciesService {
 
     const url = URL_SERVICIOS + 'species';
 
-    return from(getData(url)).pipe(
-      map((resp: any) => resp.results)
-    );
+    return from(
+            getData(url)).pipe(
+              map((resp: any) => resp.results)
+            );
 
   }
 
@@ -27,9 +28,10 @@ export class SpeciesService {
 
     const url = URL_SERVICIOS + 'species/' + id;
 
-    return from(getData(url)).pipe(
-      map((resp: any) => resp)
-    );
+    return from(
+            getData(url)).pipe(
+              map((resp: any) => resp)
+            );
 
   }
 

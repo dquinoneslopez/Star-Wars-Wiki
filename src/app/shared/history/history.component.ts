@@ -24,7 +24,7 @@ export class HistoryComponent implements OnInit {
    */
   ngOnInit() {
 
-    if (this.historyService.loadHistory() != null) {
+    if ((this.historyService.loadHistory() != null) && (this.historyService.loadHistory() != '')) {
 
       this.history = this.historyService.loadHistory();
 
@@ -38,10 +38,15 @@ export class HistoryComponent implements OnInit {
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
                       .subscribe(event => {
 
-      this.history.push(event.url);
-      this.historyService.saveHistory(this.history);
+                        if (event.url != this.history[this.history.length-1]) {
 
-    });
+                          this.history.push(event.url);
+
+                        }
+                        
+                        this.historyService.saveHistory(this.history);
+
+                      });
 
    }
 

@@ -23,6 +23,8 @@ export class SearchComponent implements OnInit {
                     const term = params.term;
                     this.search( term );
 
+                    this.films = [];
+
                   });
 
    }
