@@ -5,7 +5,7 @@
 
                 <h4 class="card-title text-center">Search</h4>
 
-                <table class="table table-striped" *ngIf="films.length > 0">
+                <table class="table table-striped" *ngIf="found">
                     <tbody>
                         <tr *ngFor="let film of films" class="text-center">
                             <a [routerLink]="['/films/film/', film.getEpisodeId()]">
@@ -17,7 +17,7 @@
                     </tbody>
                 </table>
 
-                <div *ngIf="films.length === 0" class="alert alert-info">No films found.</div>
+                <div *ngIf="!found" class="alert alert-info">No films found.</div>
 
             </div>
         </div>

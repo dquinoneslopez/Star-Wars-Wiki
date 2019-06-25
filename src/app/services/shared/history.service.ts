@@ -9,13 +9,13 @@ export class HistoryService {
 
   saveHistory(urls: string[]) {
 
-    if (!localStorage.getItem('history') || JSON.parse(localStorage.getItem('history')).length === 0) {
+    if (!sessionStorage.getItem('history') || JSON.parse(sessionStorage.getItem('history')).length === 0) {
 
-      localStorage.setItem( 'history', JSON.stringify( urls ) );
+      sessionStorage.setItem( 'history', JSON.stringify( urls ) );
 
     } else {
 
-      localStorage.history = JSON.stringify( urls );
+      sessionStorage.history = JSON.stringify( urls );
 
     }
 
@@ -23,23 +23,23 @@ export class HistoryService {
 
   loadHistory() {
 
-    if ( localStorage.getItem('history') ) {
+    if ( sessionStorage.getItem('history') ) {
 
-      const history = JSON.parse( localStorage.getItem( 'history' ) );
+      const history = JSON.parse( sessionStorage.getItem( 'history' ) );
       return history;
 
     } else {
 
-      localStorage.setItem( 'history', '' );
+      sessionStorage.setItem( 'history', '' );
 
     }
   }
 
   clearHistory() {
 
-    if ( localStorage.getItem('history') ) {
+    if ( sessionStorage.getItem('history') ) {
 
-      localStorage.removeItem('history');
+      sessionStorage.removeItem('history');
 
     }
 

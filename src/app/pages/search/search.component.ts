@@ -11,6 +11,7 @@ import { FilmService } from '../../services/film/film.service';
 export class SearchComponent implements OnInit {
 
   public films: Film[] = [];
+  public found = false;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -58,6 +59,12 @@ export class SearchComponent implements OnInit {
                                                    film.planets)
                                           );
 
+                        }
+
+                        if (films != []) {
+
+                          this.found = true;
+                          
                         }
 
                       });
