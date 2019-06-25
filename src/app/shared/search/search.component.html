@@ -5,19 +5,24 @@
 
                 <h4 class="card-title text-center">Search</h4>
 
-                <table class="table table-striped" *ngIf="found">
-                    <tbody>
-                        <tr *ngFor="let film of films" class="text-center">
-                            <a [routerLink]="['/films/film/', film.getEpisodeId()]">
-                                <td>
-                                    Episode {{ film.getEpisodeId() }} - {{ film.getTitle() }}
-                                </td>
-                            </a>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div *ngIf="!found" class="alert alert-info">No films found.</div>
+                <div *ngIf="!loaded">
+                    <p class="text-center">Loading...</p>
+                </div>
+                <div *ngIf="loaded">
+                    <table *ngIf="found" class="table table-striped">
+                        <tbody>
+                            <tr *ngFor="let film of films" class="text-center">
+                                <a [routerLink]="['/films/film/', film.getEpisodeId()]">
+                                    <td>
+                                        Episode {{ film.getEpisodeId() }} - {{ film.getTitle() }}
+                                    </td>
+                                </a>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                    <div *ngIf="!found" class="alert alert-info">No films found.</div>
+                </div>
 
             </div>
         </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Film } from '../../models/film.model';
 import { FilmService } from '../../services/film/film.service';
+import { isArray } from 'util';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class SearchComponent implements OnInit {
 
   public films: Film[] = [];
   public found = true;
+  public loaded = false;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -60,14 +62,20 @@ export class SearchComponent implements OnInit {
                                           );
 
                         }
-
+                        
                         // If it doesn't find anything set the flag 'found' to false
-                        if (this.films == []) {
-
-                          this.found = false;
+                        if( this.films.length == 0) {
                           
-                        }
+                          
+                          this.found = false;
 
+                        }
+                        
+                        this.loaded = true;
+
+                        console.log("Term: " + term);
+                        console.log("found: " + this.found);
+                        
                       });
 
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
+
+  public isNavbarCollapsed=true;
 
   constructor(
     public router: Router
@@ -21,9 +24,11 @@ export class HeaderComponent implements OnInit {
    * @param {string} term
    * @memberof HeaderComponent
    */
-  search( term: string ) {
 
-    this.router.navigate( ['/search', term] );
+  search( event, term ) {
+    event.preventDefault()
+
+    this.router.navigate( ['/search', term.value] );
 
   }
 

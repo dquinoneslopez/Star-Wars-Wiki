@@ -5,6 +5,7 @@ async function getData(url) {
         const res = await promisedRequest(url);
 
         return JSON.parse(res);
+        
     }
     catch (error) {
 
