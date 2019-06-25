@@ -11,7 +11,7 @@ import { FilmService } from '../../services/film/film.service';
 export class SearchComponent implements OnInit {
 
   public films: Film[] = [];
-  public found = false;
+  public found = true;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -61,9 +61,9 @@ export class SearchComponent implements OnInit {
 
                         }
 
-                        if (films != []) {
+                        if (films === []) {
 
-                          this.found = true;
+                          this.found = false;
                           
                         }
 

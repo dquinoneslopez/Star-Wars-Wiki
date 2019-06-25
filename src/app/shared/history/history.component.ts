@@ -38,12 +38,22 @@ export class HistoryComponent implements OnInit {
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
                       .subscribe(event => {
 
-                        if (event.url != this.history[this.history.length-1]) {
+                        const urlIndex = this.history.indexOf(event.url);
 
-                          this.history.push(event.url);
+                        if (urlIndex >= 0) {
+                          
+                          this.history.splice(urlIndex, 1);
 
                         }
-                        
+
+                        this.history.unshift(event.url);
+
+                        if (this.history.length > 3) {
+
+                          this.history.pop();
+
+                        }
+                                                
                         this.historyService.saveHistory(this.history);
 
                       });

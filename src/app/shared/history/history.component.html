@@ -2,7 +2,7 @@
     <div class="col-12 h-100">
         <h4>Recently visited:</h4>
         <a (click)="clearHistory()" class="btn btn-info">Clear</a>
-        <ul class="nav flex-column text-left" *ngFor="let url of history.reverse()">
+        <ul class="nav flex-column text-left" *ngFor="let url of history">
             <li class="nav-item">
                 <a class="nav-link" [routerLink]="[url]">- {{url}}</a>
             </li>
