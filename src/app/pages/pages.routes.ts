@@ -1,5 +1,4 @@
 import { Routes, RouterModule } from '@angular/router';
-// import { PagesComponent } from './pages.component';
 
 import { FilmsComponent } from './films/films.component';
 import { FilmComponent } from './films/film.component';
@@ -9,7 +8,7 @@ import { SpeciesComponent } from './species/species.component';
 import { StarshipsComponent } from './starships/starships.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { PrincipalComponent } from './principal/principal.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from '../shared/search/search.component';
 
 const pagesRoutes: Routes = [
     { path: 'principal', component: PrincipalComponent},

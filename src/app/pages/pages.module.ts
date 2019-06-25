@@ -11,8 +11,8 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
 import { FilmComponent } from './films/film.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrincipalComponent } from './principal/principal.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { SearchComponent } from './search/search.component';
+import { CarouselComponent } from '../shared/carousel/carousel.component';
+import { SearchComponent } from '../shared/search/search.component';
 
 @NgModule({
   declarations: [

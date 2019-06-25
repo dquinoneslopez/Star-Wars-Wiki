@@ -38,6 +38,8 @@ export class HistoryComponent implements OnInit {
     this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd))
                       .subscribe(event => {
 
+                        // Makes sure that the url isn't currently in the history.
+                        // If it is, it deletes it and adds tue url at the start
                         const urlIndex = this.history.indexOf(event.url);
 
                         if (urlIndex >= 0) {
@@ -48,7 +50,8 @@ export class HistoryComponent implements OnInit {
 
                         this.history.unshift(event.url);
 
-                        if (this.history.length > 3) {
+                        // It shows only the last ten visited pages
+                        if (this.history.length > 10) {
 
                           this.history.pop();
 

@@ -61,7 +61,8 @@ export class SearchComponent implements OnInit {
 
                         }
 
-                        if (films === []) {
+                        // If it doesn't find anything set the flag 'found' to false
+                        if (this.films == []) {
 
                           this.found = false;
                           

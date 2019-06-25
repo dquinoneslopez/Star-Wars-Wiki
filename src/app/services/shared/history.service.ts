@@ -33,6 +33,7 @@ export class HistoryService {
       sessionStorage.setItem( 'history', '' );
 
     }
+
   }
 
   clearHistory() {
@@ -42,8 +43,6 @@ export class HistoryService {
       sessionStorage.removeItem('history');
 
     }
-
-
 
   }
 }
