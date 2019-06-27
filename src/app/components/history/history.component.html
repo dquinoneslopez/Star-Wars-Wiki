@@ -1,6 +1,6 @@
 <div class="row" id="sidebar">
 
-    <div class="col-12 px-0">
+    <div class="col-12">
 
         <div class="card">
 
@@ -8,15 +8,15 @@
 
                 <div class="row">
 
-                    <div class="col-11 px-0">
+                    <div class="col-9 px-0">
 
                         <h4>Recently visited:</h4>
 
                     </div>
 
-                    <div class="col-1 hidden-sm-up px-0">
+                    <div class="col-2 m-auto hidden-sm-up">
 
-                        <button type="button" (click)="isHistoryCollapsed = !isHistoryCollapsed" 
+                        <button class="btn" type="button" (click)="isHistoryCollapsed = !isHistoryCollapsed" 
                                 data-target="#historyDefault" aria-controls="historyDefault" aria-expanded="false" aria-label="Toggle navigation">
                             <fa-icon icon="angle-down"></fa-icon>
                         </button>
@@ -47,7 +47,7 @@
 
                     <div class="card-footer text-center">
 
-                            <a (click)="clearHistory()" class="btn btn-info">Clear</a>
+                            <a (click)="clearHistory()" class="btn">Clear</a>
 
                     </div>
 
