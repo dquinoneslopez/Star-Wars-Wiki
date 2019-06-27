@@ -1,0 +1,62 @@
+<div class="row" id="sidebar">
+
+    <div class="col-12 px-0">
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <div class="row">
+
+                    <div class="col-11 px-0">
+
+                        <h4>Recently visited:</h4>
+
+                    </div>
+
+                    <div class="col-1 hidden-sm-up px-0">
+
+                        <button type="button" (click)="isHistoryCollapsed = !isHistoryCollapsed" 
+                                data-target="#historyDefault" aria-controls="historyDefault" aria-expanded="false" aria-label="Toggle navigation">
+                            <fa-icon icon="angle-down"></fa-icon>
+                        </button>
+
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+            <div [ngbCollapse]="!isHistoryCollapsed" class="collapse" id="historyDefault">
+
+                <div class="dropdown" ngbDropdown>
+
+                    <div class="card-body">
+
+                        <ul class="nav text-left" *ngFor="let url of history">
+
+                            <li class="nav-item">
+
+                                <a class="nav-link" [routerLink]="[url]">- {{url}}</a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="card-footer text-center">
+
+                            <a (click)="clearHistory()" class="btn btn-info">Clear</a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

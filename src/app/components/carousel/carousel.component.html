@@ -1,0 +1,107 @@
+<ngb-carousel #carousel>
+
+    <ng-template ngbSlide *ngFor="let character of getCharacters()">
+
+        <div class="card">
+
+            <div class="card-header text-center">
+
+                {{character.name}}
+
+            </div>
+
+            <div class="card-body">
+
+                <ul>
+
+                    <div class="row">
+
+                        <div class="col-12">
+
+                            <div class="row">
+
+                                <div class="col-6">
+
+                                    <li><span class="font-weight-bold">Birth:<br></span> {{character.getBirthYear()}}</li>
+                                    <li><span class="font-weight-bold">Eye Color:<br></span> {{character.getEyeColor()}}</li>
+                                    <li><span class="font-weight-bold">Eye Color:<br></span> {{character.getGender()}}</li>
+                                    <li><span class="font-weight-bold">Eye Color:<br></span> {{character.getHairColor()}}</li>
+
+                                </div>
+
+                                <div class="col-6">
+
+                                    <li><span class="font-weight-bold">Height:<br></span> {{character.getHeight()}}</li>
+                                    <li><span class="font-weight-bold">Weight:<br></span> {{character.getMass()}}</li>
+                                    <li><span class="font-weight-bold">Skin color:<br></span> {{character.getSkinColor()}}</li>
+                                    <li><span class="font-weight-bold">Homeworld:<br></span> {{character.getHomeworld()}}</li>
+                                    <li>
+                                        <span class="font-weight-bold">Species:</span>
+                                        <ul *ngFor="let species of character.getSpecies()">
+                                            <li>{{species}}</li>
+                                        </ul>
+                                    </li>
+
+                                </div> 
+
+                            </div>                                                       
+
+                        </div>
+
+                        <div class="col-12">
+
+                            <li class="mx-0">
+
+                                <span class="font-weight-bold">Films:</span>
+
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr *ngFor="let film of character.getFilms()">
+                                            <td>{{film}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </li>
+
+                            <li *ngIf="character.getStarships().length > 0">
+
+                                <span class="font-weight-bold">Starships:</span>
+
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr *ngFor="let starship of character.getStarships()">
+                                            <td>{{starship}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </li>
+
+                            <li *ngIf="character.getVehicles().length > 0">
+                                
+                                <span class="font-weight-bold">Vehicles:</span>
+
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr *ngFor="let vehicle of character.getVehicles()">
+                                            <td>{{vehicle}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </li>
+
+                        </div>
+
+                    </div>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </ng-template>
+
+</ngb-carousel>
