@@ -112,10 +112,11 @@ input[type="search"] {
   border-top: none;
   position: absolute;
   left: 25%;
-  top: calc(50% + 25px);
-  max-height: calc(50% - 15px);
+  /* top: calc(50% + 25px); */
+  /* max-height: calc(50% - 15px); */
   overflow-y: auto;
-  background: #000000
+  background: #fff;
+  z-index: 9999999;
 }
 
 .filter-select-list {

@@ -28,14 +28,16 @@
                             </form>
 
                         </div>
+                        
+                        <ul class="filter-select">
+                            <li *ngFor="let result of results" class="filter-select-list">
+                                <p class="film-suggestion">{{result.title}}</p>
+                            </li>
+                        </ul>
 
                     </div>                    
 
-                    <ul class="filter-select">
-                        <li *ngFor="let result of results" class="filter-select-list">
-                            <p class="film-suggestion">{{result.title}}</p>
-                        </li>
-                    </ul>
+                    
                 </li>
             </ul>
         </div>

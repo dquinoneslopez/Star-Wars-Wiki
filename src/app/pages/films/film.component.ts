@@ -48,20 +48,32 @@ export class FilmComponent implements OnInit {
 
     return this.film;
 
-  } 
+  }
 
+  /**
+   * Sets film
+   * @param film 
+   */
   setFilm( film: Film) {
 
     Object.assign(this.film, film)
 
   }
 
+  /**
+   * Gets locale date
+   * @returns  localeDate
+   */
   getLocaleDate() {
 
     return this.localeDate;
 
   }
 
+  /**
+   * Sets locale date
+   * @param date 
+   */
   setLocaleDate(date: Date) {
 
     this.localeDate = date.toLocaleDateString();
