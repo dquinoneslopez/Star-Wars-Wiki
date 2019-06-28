@@ -12,7 +12,7 @@
 
             <div class="card-body">
 
-                <ul>
+                <ul *ngIf="loaded; else elseTemplate" >
 
                     <div class="row">
 
@@ -97,6 +97,12 @@
                     </div>
 
                 </ul>
+
+                <ng-template #elseTemplate>
+
+                    <h3 class="card-title text-center">Loading...</h3>
+        
+                </ng-template>
 
             </div>
 

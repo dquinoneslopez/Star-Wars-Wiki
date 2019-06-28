@@ -6,8 +6,8 @@ export class Character {
         private eye_color: string,
         private gender: string,
         private hair_color: string,
-        private height: string,
-        private mass: string,
+        private height: number,
+        private mass: number,
         private skin_color: string,
         private homeworld: string[],
         private films: string[],
@@ -40,5 +40,31 @@ export class Character {
     getStarships() { return this.starships; }
 
     getVehicles() { return this.vehicles; }
+
+    setName(name: string) { this.name = name; }
+
+    setBirthYear(birthYear: string) { this.birth_year = birthYear; }
+
+    setEyeColor(eyeColor: string) { this.eye_color = eyeColor; }
+
+    setGender(gender: string) { this.gender = gender; }
+
+    setHairColor(hairColor: string) { this.hair_color = hairColor; }
+
+    setHeight(height: number) { this.height = height; }
+
+    setMass(mass: number) { this.mass = mass; }
+
+    setSkinColor(skinColor: string) { this.skin_color = skinColor; }
+
+    setHomeworld(homeworld: string[]) { this.homeworld = homeworld; }
+
+    setFilms(films: string[]) { this.films = films; }
+
+    setSpecies(species: string[]) { this.species = species; }
+
+    setStarships(starships: string[]) { this.starships = starships; }
+
+    setVehicles(vehicles: string[]) { this.vehicles = vehicles; }
 
 }

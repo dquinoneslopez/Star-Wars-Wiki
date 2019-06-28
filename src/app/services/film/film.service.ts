@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+// import { Observable } from 'rxjs/Rx';
 import { URL_SERVICIOS } from '../../config/config';
 import { from } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,18 +11,27 @@ declare function getData(url: string);
 })
 export class FilmService {
 
-  constructor() {}
+  constructor() { }
 
+  /**
+   * Loads films
+   * @returns  Film[]
+   */
   loadFilms() {
 
     const url = URL_SERVICIOS + 'films';
 
     return from(getData(url)).pipe(
-       map((resp: any) => resp.results)
-     );
+      map((resp: any) => resp.results)
+    );
   }
 
-  getFilm( id: string ) {
+  /**
+   * Gets film
+   * @param id film id
+   * @returns  Film
+   */
+  getFilm(id: string) {
 
     const url = URL_SERVICIOS + 'films/' + id;
 
@@ -31,7 +41,12 @@ export class FilmService {
 
   }
 
-  searchFilm( title: string ) {
+  /**
+   * Searchs film
+   * @param title film title
+   * @returns  Film
+   */
+  searchFilm(title: string) {
 
     const url = URL_SERVICIOS + 'films/?search=' + title;
 
@@ -40,5 +55,7 @@ export class FilmService {
     );
 
   }
+
+
 
 }

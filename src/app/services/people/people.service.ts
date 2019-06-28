@@ -14,6 +14,10 @@ export class PeopleService {
 
   constructor() { }
 
+  /**
+   * Loads people
+   * @returns  People[]
+   */
   loadPeople() {
 
     const url = URL_SERVICIOS + 'people';
@@ -24,7 +28,12 @@ export class PeopleService {
 
   }
 
-  getPeople( id: string ) {
+  /**
+   * Gets people
+   * @param id character id
+   * @returns  People
+   */
+  getPeople( id: number ) {
 
     const url = URL_SERVICIOS + 'people/' + id;
 

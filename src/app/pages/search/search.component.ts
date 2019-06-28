@@ -64,7 +64,7 @@ export class SearchComponent implements OnInit {
                         }
                         
                         // If it doesn't find anything set the flag 'found' to false
-                        if( this.films.length == 0) {
+                        if ( this.films.length === 0) {
                           
                           
                           this.found = false;
@@ -72,9 +72,6 @@ export class SearchComponent implements OnInit {
                         }
                         
                         this.loaded = true;
-
-                        console.log("Term: " + term);
-                        console.log("found: " + this.found);
                         
                       });
 

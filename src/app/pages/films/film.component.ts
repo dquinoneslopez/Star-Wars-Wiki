@@ -13,10 +13,13 @@ import { PeopleService } from '../../services/people/people.service';
 export class FilmComponent implements OnInit {
 
   private people: string[] = [];
-  public film: Film = new Film('', '', '', '', '', new Date(), [], [], [], [], [], '', '', '');
+  private film: Film = new Film('', 0, '', '', '', new Date(), [], [], [], [], [], '', new Date(), new Date());
+  private localeDate = '';
+  public loaded = false;
 
   /**
-   *Creates an instance of FilmComponent. Also takes the url get param and load the film's info
+   * Creates an instance of FilmComponent. Also takes the url get param and load the film's info
+   *
    * @param {FilmService} filmService
    * @param {PeopleService} peopleService
    * @param {ActivatedRoute} activatedRoute
@@ -40,6 +43,31 @@ export class FilmComponent implements OnInit {
    }
 
   ngOnInit() {}
+
+  getFilm() {
+
+    return this.film;
+
+  } 
+
+  setFilm( film: Film) {
+
+    Object.assign(this.film, film)
+
+  }
+
+  getLocaleDate() {
+
+    return this.localeDate;
+
+  }
+
+  setLocaleDate(date: Date) {
+
+    this.localeDate = date.toLocaleDateString();
+    console.log('locale: ' + this.localeDate);
+
+  }
 
   /**
    * Makes a call to FilmService to retrive the film's info and loads the film's characters
@@ -66,7 +94,8 @@ export class FilmComponent implements OnInit {
     this.filmService.getFilm( id )
                     .subscribe( film => {
 
-                      this.film = Object.assign(this.film, film);
+                      this.setFilm(film);
+                      // this.setLocaleDate(this.getFilm().getReleaseDate());
                       this.loadPeople();
 
                     } );
@@ -82,15 +111,16 @@ export class FilmComponent implements OnInit {
 
     for ( const url of this.film.getCharacters() ) {
 
-      let character = new People('', '', '', '', '', '', '', '', '', [], [], [], []);
+      let character = new People('', '', '', '', '', 0, 0, '', '', [], [], [], []);
       const split = url.split('/');
-      const id = split[split.length - 2];
+      const id = parseInt( split[split.length - 2], 10 );
 
       this.peopleService.getPeople( id )
                         .subscribe( people => {
 
                           character = Object.assign(character, people);
                           this.people.push( character.getName() );
+                          this.loaded = true;
 
                         } );
 

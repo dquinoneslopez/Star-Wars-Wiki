@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HistoryComponent } from './history/history.component';
+
+import { FilmService } from '../services/service.index';
 
 
 @NgModule({
@@ -14,18 +16,20 @@ import { HistoryComponent } from './history/history.component';
     HeaderComponent,
     FooterComponent,
     NopagefoundComponent,
-    HistoryComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     NgbModule,
+    ReactiveFormsModule,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     NopagefoundComponent,
-    HistoryComponent,
+  ],
+  providers: [
+    FilmService
   ]
 })
 export class SharedModule { }

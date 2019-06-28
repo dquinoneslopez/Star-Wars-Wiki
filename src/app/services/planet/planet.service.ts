@@ -12,7 +12,12 @@ export class PlanetService {
 
   constructor() {}
 
-  getPlanet( id: string ) {
+  /**
+   * Gets planet
+   * @param id planet id
+   * @returns  Planet
+   */
+  getPlanet( id: number ) {
 
     const url = URL_SERVICIOS + 'planets/' + id;
 

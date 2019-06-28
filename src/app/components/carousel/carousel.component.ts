@@ -23,6 +23,7 @@ export class CarouselComponent implements OnInit {
 
   private characters: Character[] = [];
   private people: People[] = [];
+  public loaded = false;
 
   constructor(
     private peopleService: PeopleService,
@@ -86,6 +87,7 @@ export class CarouselComponent implements OnInit {
                         }
 
                         this.loadPeopleData();
+                        this.loaded = true;
 
                       } );
 
@@ -117,6 +119,7 @@ export class CarouselComponent implements OnInit {
       );
 
       this.characters.push(character);
+      
 
     }
 
@@ -175,7 +178,7 @@ export class CarouselComponent implements OnInit {
 
     const homeworldUrl = character.getHomeWorld();
     const homeworldSplit = homeworldUrl.split('/');
-    const homeworldId = homeworldSplit[homeworldSplit.length - 2];
+    const homeworldId = parseInt(homeworldSplit[homeworldSplit.length - 2], 10);
 
     const characterPlanet = [];
 
@@ -205,7 +208,7 @@ export class CarouselComponent implements OnInit {
     for (const url of character.getSpecies()) {
 
       const speciesSplit = url.split('/');
-      const speciesId = speciesSplit[speciesSplit.length - 2];
+      const speciesId = parseInt(speciesSplit[speciesSplit.length - 2], 10);
 
       this.speciesService.getSpecies(speciesId).subscribe((species: any) => {
 
@@ -233,7 +236,7 @@ export class CarouselComponent implements OnInit {
     for (const url of character.getStarships()) {
 
       const starshipSplit = url.split('/');
-      const starshipId = starshipSplit[starshipSplit.length - 2];
+      const starshipId = parseInt(starshipSplit[starshipSplit.length - 2], 10);
 
       this.starshipService.getStarship(starshipId).subscribe((starship: any) => {
 
@@ -261,7 +264,7 @@ export class CarouselComponent implements OnInit {
     for (const url of character.getVehicles()) {
 
       const vehicleSplit = url.split('/');
-      const vehicleId = vehicleSplit[vehicleSplit.length - 2];
+      const vehicleId = parseInt(vehicleSplit[vehicleSplit.length - 2], 10);
 
       this.vehicleService.getVehicle(vehicleId).subscribe((vehicle: any) => {
 

@@ -26,10 +26,10 @@ export class PlanetsComponent implements OnInit {
   /**
    * Makes a call to PlanetService and retrieves a planet by it id
    *
-   * @param {string} id
+   * @param {number} id
    * @memberof PlanetsComponent
    */
-  getPlanet(id: string) {
+  getPlanet(id: number) {
 
     this.planetService.getPlanet(id)
                       .subscribe(planet => this.planet = planet.name);

@@ -13,6 +13,10 @@ export class SpeciesService {
 
   constructor() {}
 
+  /**
+   * Loads species
+   * @returns  Species[]
+   */
   loadSpecies() {
 
     const url = URL_SERVICIOS + 'species';
@@ -24,7 +28,12 @@ export class SpeciesService {
 
   }
 
-  getSpecies( id: string ) {
+  /**
+   * Gets species
+   * @param id species id
+   * @returns  Species
+   */
+  getSpecies( id: number ) {
 
     const url = URL_SERVICIOS + 'species/' + id;
 

@@ -12,6 +12,10 @@ export class StarshipService {
 
   constructor() { }
 
+  /**
+   * Loads starships
+   * @returns  Starship[]
+   */
   loadStarships() {
 
     const url = URL_SERVICIOS + 'starships';
@@ -22,7 +26,12 @@ export class StarshipService {
 
   }
 
-  getStarship( id: string ) {
+  /**
+   * Gets starship
+   * @param id starship id
+   * @returns  Starship
+   */
+  getStarship(id: number) {
 
     const url = URL_SERVICIOS + 'starships/' + id;
 

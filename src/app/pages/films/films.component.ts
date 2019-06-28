@@ -9,6 +9,7 @@ import { FilmService } from '../../services/service.index';
 export class FilmsComponent implements OnInit {
 
   public films: Film[] = [];
+  public loaded = false;
 
   constructor(
     private filmService: FilmService
@@ -17,7 +18,6 @@ export class FilmsComponent implements OnInit {
   ngOnInit() {
 
     this.loadFilms();
-    
 
   }
 
@@ -29,7 +29,10 @@ export class FilmsComponent implements OnInit {
   loadFilms() {
 
     this.filmService.loadFilms()
-                    .subscribe( films => this.films = films );
+                    .subscribe( films => {
+                      this.films = films;
+                      this.loaded = true;
+                    } );
 
   }
 

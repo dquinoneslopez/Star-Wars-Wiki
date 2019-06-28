@@ -7,6 +7,10 @@ export class HistoryService {
 
   constructor() { }
 
+  /**
+   * Saves history
+   * @param urls urls to store
+   */
   saveHistory(urls: string[]) {
 
     if (!sessionStorage.getItem('history') || JSON.parse(sessionStorage.getItem('history')).length === 0) {
@@ -21,6 +25,10 @@ export class HistoryService {
 
   }
 
+  /**
+   * Loads history
+   * @returns  string[]
+   */
   loadHistory() {
 
     if ( sessionStorage.getItem('history') ) {
@@ -36,6 +44,9 @@ export class HistoryService {
 
   }
 
+  /**
+   * Clears history
+   */
   clearHistory() {
 
     if ( sessionStorage.getItem('history') ) {

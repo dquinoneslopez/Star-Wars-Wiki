@@ -12,6 +12,10 @@ export class VehicleService {
 
   constructor() { }
 
+  /**
+   * Loads vehicles
+   * @returns  Vehicle[]
+   */
   loadVehicles() {
 
     const url = URL_SERVICIOS + 'vehicles';
@@ -22,7 +26,12 @@ export class VehicleService {
 
   }
 
-  getVehicle( id: string ) {
+  /**
+   * Gets vehicle
+   * @param id vehicle id
+   * @returns  Vechicle
+   */
+  getVehicle(id: number) {
 
     const url = URL_SERVICIOS + 'vehicles/' + id;
 

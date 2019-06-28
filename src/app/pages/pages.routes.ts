@@ -8,7 +8,7 @@ import { SpeciesComponent } from './species/species.component';
 import { StarshipsComponent } from './starships/starships.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
 import { PrincipalComponent } from './principal/principal.component';
-import { SearchComponent } from '../shared/search/search.component';
+import { SearchComponent } from './search/search.component';
 
 const pagesRoutes: Routes = [
     { path: 'principal', component: PrincipalComponent},

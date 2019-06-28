@@ -3,22 +3,26 @@ export class Vehicle {
     constructor (
         private name: string,
         private model: string,
-        private vehicle_class?: string,
+        private vehicleClass?: string,
         private manufacturer?: string,
-        private length?: string,
-        private cost_in_credits?: string,
-        private crew?: string,
-        private passengers?: string,
-        private max_atmosphering_speed?: string,
-        private cargo_capacity?: string,
+        private length?: number,
+        private costInCredits?: number,
+        private crew?: number,
+        private passengers?: number,
+        private maxAtmospheringSpeed?: number,
+        private cargoCapacity?: number,
         private consumables?: string,
         private films?: string[],
         private pilots?: string[],
         private url?: string,
-        private created?: string,
-        private edited?: string) {}
-    
+        private created?: Date,
+        private edited?: Date) {}
+
     getName() { return this.name; }
 
+    setName( name: string ) { this.name = name; }
+
     getModel() { return this.model; }
+
+    setModel( model: string ) { this.model = model; }
 }
